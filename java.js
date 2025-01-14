@@ -1,3 +1,8 @@
+const tradicon = L.icon({
+    iconUrl: "bilder/Trädavfall.webp",
+    iconSize: [50, 50],
+});
+
 const panticon = L.icon({
     iconUrl: "bilder/Pantstation.webp",
     iconSize: [80, 80],
@@ -20,13 +25,15 @@ const soppicon = L.icon({
 
 
 
-
-
+const allTradavfall = L.layerGroup();
 const allPantstations = L.layerGroup();
 const allAtervinning = L.layerGroup();
 const allBins = L.layerGroup();
 
 
+
+
+const tradavfall1 = L.marker([58.747704, 17.049763], { icon: tradicon }).addTo(allTradavfall);
 
 // Här kommer alla pantstationer
 const pantstation1 = L.marker([58.770468, 17.020561], { icon: panticon }).addTo(allPantstations);
@@ -197,7 +204,7 @@ const osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 const map = L.map("map", {
     center: [58.75315, 17.01756],
     zoom: 14,
-    layers: [osm, allPantstations, allAtervinning, allBins,],
+    layers: [osm, allPantstations, allAtervinning, allBins, allTradavfall,],
 });
 
 
@@ -206,6 +213,7 @@ const overlays = {
     Pantstationer: allPantstations,
     Återvinningsstationer: allAtervinning, 
     Soptunnor: allBins,
+    Trädgårdsavfall: allTradavfall,
     
 };
 
